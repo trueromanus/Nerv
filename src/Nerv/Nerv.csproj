@@ -5,7 +5,7 @@
 		<Company>EmptyFlow</Company>
 		<VersionSuffix>alpha</VersionSuffix>
 		<VersionPrefix>0.0.1</VersionPrefix>
-		<Description>Ultra light library for reactive programming in xaml based world</Description>
+		<Description>Ultra light reactive library for XAML-binding applications</Description>
 		<Copyright>Copyright (c) 2021 EmptyFlow</Copyright>
 		<PackageTags>xaml, reactive programming, mvvm</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
