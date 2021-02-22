@@ -119,6 +119,15 @@ namespace Nerv {
 			}
 		}
 
+		/// <summary>
+		/// Raise canExecute for all commands.
+		/// </summary>
+		public void RaiseCanExecuteCommands() {
+			foreach (var reactiveCommand in m_reactiveCommands) {
+				if ( reactiveCommand.TryGetTarget ( out var command ) ) command.RaiseCanExecuteChanged ();
+			}
+		}
+
 	}
 
 }
