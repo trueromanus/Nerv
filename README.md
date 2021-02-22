@@ -1,6 +1,10 @@
 # Nerv
 Ultra light reactive library for XAML-binding applications.
 
+## Documentation
+
+[Main documentation](https://github.com/trueromanus/Nerv/wiki/Documentation)
+
 ## Hello world example
 
 ```csharp
