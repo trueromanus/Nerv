@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>RomanAsylum</Authors>
+    <Company>EmptyFlow</Company>
+    <Description>Ultra light library for reactive programming in xaml based world</Description>
+    <Copyright>Copyright (c) 2021 EmptyFlow</Copyright>
+    <PackageTags>xaml, reactive programming, mvvm</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
