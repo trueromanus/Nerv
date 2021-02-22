@@ -1,5 +1,5 @@
 # Nerv
-Ultra light reactive library for XAML-binding applications.
+Ultra light reactive library for XAML-binding applications for NETStandart 2.0.
 
 ## Documentation
 
