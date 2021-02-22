@@ -1,13 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>RomanAsylum</Authors>
-    <Company>EmptyFlow</Company>
-    <Description>Ultra light library for reactive programming in xaml based world</Description>
-    <Copyright>Copyright (c) 2021 EmptyFlow</Copyright>
-    <PackageTags>xaml, reactive programming, mvvm</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Authors>RomanAsylum</Authors>
+		<Company>EmptyFlow</Company>
+		<VersionSuffix>alpha</VersionSuffix>
+		<VersionPrefix>0.0.1</VersionPrefix>
+		<Description>Ultra light library for reactive programming in xaml based world</Description>
+		<Copyright>Copyright (c) 2021 EmptyFlow</Copyright>
+		<PackageTags>xaml, reactive programming, mvvm</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RepositoryUrl>https://github.com/trueromanus/Nerv</RepositoryUrl>
+		<Title>Nerv</Title>
+		<PackageProjectUrl>https://github.com/trueromanus/Nerv</PackageProjectUrl>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Include="..\..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
+	</ItemGroup>
 </Project>
