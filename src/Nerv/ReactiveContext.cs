@@ -18,13 +18,23 @@ namespace Nerv {
 		/// Attach reactive property.
 		/// </summary>
 		/// <param name="reactiveProperty">Reactive property.</param>
-		public void Attach ( IReactiveProperty reactiveProperty ) => m_reactiveProperties.Add ( new WeakReference<IReactiveProperty> ( reactiveProperty ) );
+		/// <exception cref="ArgumentNullException"></exception>
+		public void Attach ( IReactiveProperty reactiveProperty ) {
+			if ( reactiveProperty == null ) throw new ArgumentNullException ( nameof ( reactiveProperty ) );
+
+			m_reactiveProperties.Add ( new WeakReference<IReactiveProperty> ( reactiveProperty ) );
+		}
 
 		/// <summary>
 		/// Attach reactive command.
 		/// </summary>
 		/// <param name="reactiveCommand">Reactive command.</param>
-		public void Attach ( IReactiveCommand reactiveCommand ) => m_reactiveCommands.Add ( new WeakReference<IReactiveCommand> ( reactiveCommand ) );
+		/// <exception cref="ArgumentNullException"></exception>
+		public void Attach ( IReactiveCommand reactiveCommand ) {
+			if ( reactiveCommand == null ) throw new ArgumentNullException ( nameof ( reactiveCommand ) );
+
+			m_reactiveCommands.Add ( new WeakReference<IReactiveCommand> ( reactiveCommand ) );
+		}
 
 		/// <summary>
 		/// Attach all reactive properties and commands from targetObject.
@@ -34,7 +44,10 @@ namespace Nerv {
 		/// Usually it ViewModel class that have properties with types ReactiveProperty`1, ParameterlessCommand or ParameterfulCommand.
 		/// All reactive properties and commands automatically will be added to reactive context.
 		/// </param>
+		/// <exception cref="ArgumentNullException"></exception>
 		public void AttachAll<T> ( T targetObject ) {
+			if ( targetObject == null ) throw new ArgumentNullException ( nameof ( targetObject ) );
+
 			var properties = targetObject
 				.GetType ()
 				.GetTypeInfo ()
