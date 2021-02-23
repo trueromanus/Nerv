@@ -6,6 +6,7 @@ Ultra light reactive library for XAML-binding applications for NETStandart 2.0.
 - Source code writing simple as much as possible and will be kept small size in the future.
 - If you want to avoid writing boilerplate code without postprocessors or complex libraries that being a black box.
 - Use library doesn't require ViewModel class will be inherited from classes or decorated attributes.
+- Zero dependencies. Only NETStandart 2.0.
 - Support with all XAML frameworks
 
 ## Documentation
