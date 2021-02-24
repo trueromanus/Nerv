@@ -93,6 +93,8 @@ namespace Nerv {
 		/// <param name="reactiveProperty">Reactive property that will be raised.</param>
 		/// <param name="raiseRelated">If true then after raising the property itself it finds related properties by Group property and raises it also.</param>
 		public void RaiseProperty ( IReactiveProperty reactiveProperty , bool raiseRelated = true ) {
+			if ( reactiveProperty == null ) throw new ArgumentNullException ( nameof ( reactiveProperty ) );
+
 			reactiveProperty.RaiseProperty ();
 
 			if ( !raiseRelated ) return;

@@ -155,6 +155,60 @@ namespace Nerv.UnitTests {
 			Assert.True ( secondCommand );
 		}
 
+		[Fact]
+		public void RaiseProperty_Parameter_Null () {
+			// arrange
+			var context = new ReactiveContext ();
+			ReactiveProperty<int> property = null;
+
+			// assert
+			Assert.Throws<ArgumentNullException> (
+				() => {
+					// action
+					context.RaiseProperty ( property , false );
+				}
+			);
+		}
+
+		[Fact]
+		public void RaiseProperty_WithoutRelatedProperties () {
+			// arrange
+			var context = new ReactiveContext ();
+			var reactiveProperty = A.Fake<IReactiveProperty> ();
+			var result = false;
+			A.CallTo ( () => reactiveProperty.RaiseProperty () ).Invokes ( () => result = true );
+
+			// action
+			context.RaiseProperty ( reactiveProperty , false );
+
+			// assert
+			Assert.True ( result );
+		}
+
+		[Fact]
+		public void RaiseProperty_WithRelatedProperties () {
+			// arrange
+			var context = new ReactiveContext ();
+			var reactiveProperty = A.Fake<IReactiveProperty> ();
+			var reactiveProperty2 = A.Fake<IReactiveProperty> ();
+
+			context.Attach ( reactiveProperty2 );
+
+			var resultReactiveProperty = false;
+			var resultReactiveProperty2 = false;
+			A.CallTo ( () => reactiveProperty.RaiseProperty () ).Invokes ( () => resultReactiveProperty = true );
+			A.CallTo ( () => reactiveProperty.Group ).Returns ( "test" );
+			A.CallTo ( () => reactiveProperty2.RaiseProperty () ).Invokes ( () => resultReactiveProperty2 = true );
+			A.CallTo ( () => reactiveProperty2.Group ).Returns ( "test" );
+
+			// action
+			context.RaiseProperty ( reactiveProperty , true );
+
+			// assert
+			Assert.True ( resultReactiveProperty );
+			Assert.True ( resultReactiveProperty2 );
+		}
+
 	}
 
 }
