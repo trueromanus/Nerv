@@ -56,7 +56,8 @@ namespace Nerv {
 					a => a
 						.PropertyType
 						.GetInterfaces ()
-						.Contains ( typeof ( IReactiveProperty ) )
+						.Contains ( typeof ( IReactiveProperty ) ) ||
+						a.PropertyType == typeof ( IReactiveProperty )
 				);
 
 			foreach ( var property in properties ) {
@@ -74,7 +75,8 @@ namespace Nerv {
 					a => a
 						.PropertyType
 						.GetInterfaces ()
-						.Contains ( typeof ( IReactiveCommand ) )
+						.Contains ( typeof ( IReactiveCommand ) ) ||
+						a.PropertyType == typeof ( IReactiveCommand )
 				);
 
 			foreach ( var command in commands ) {
@@ -135,8 +137,8 @@ namespace Nerv {
 		/// <summary>
 		/// Raise canExecute for all commands.
 		/// </summary>
-		public void RaiseCanExecuteCommands() {
-			foreach (var reactiveCommand in m_reactiveCommands) {
+		public void RaiseCanExecuteCommands () {
+			foreach ( var reactiveCommand in m_reactiveCommands ) {
 				if ( reactiveCommand.TryGetTarget ( out var command ) ) command.RaiseCanExecuteChanged ();
 			}
 		}
