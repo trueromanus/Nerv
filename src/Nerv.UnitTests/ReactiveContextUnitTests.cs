@@ -209,6 +209,38 @@ namespace Nerv.UnitTests {
 			Assert.True ( resultReactiveProperty2 );
 		}
 
+		[Fact]
+		public void RaiseAllInGroup_HappyPath () {
+			//arrange
+			var stringProperty = false;
+			var integerProperty = false;
+			var firstCommand = false;
+			var secondCommand = false;
+			var context = new ReactiveContext ();
+			TestHost host = new TestHost {
+				StringProperty = A.Fake<IReactiveProperty> () ,
+				IntegerProperty = A.Fake<IReactiveProperty> () ,
+				FirstCommand = A.Fake<IReactiveCommand> () ,
+				SecondCommand = A.Fake<IReactiveCommand> ()
+			};
+			A.CallTo ( () => host.StringProperty.RaiseProperty () ).Invokes ( () => stringProperty = true );
+			A.CallTo ( () => host.StringProperty.Group ).Returns ( "testgroup" );
+			A.CallTo ( () => host.IntegerProperty.RaiseProperty () ).Invokes ( () => integerProperty = true );
+			A.CallTo ( () => host.FirstCommand.RaiseCanExecuteChanged () ).Invokes ( () => firstCommand = true );
+			A.CallTo ( () => host.FirstCommand.Group ).Returns ( "testgroup" );
+			A.CallTo ( () => host.SecondCommand.RaiseCanExecuteChanged () ).Invokes ( () => secondCommand = true );
+			context.AttachAll ( host );
+
+			//action
+			context.RaiseAllInGroup ( "testgroup" );
+
+			//assert
+			Assert.True ( stringProperty );
+			Assert.False ( integerProperty );
+			Assert.True ( firstCommand );
+			Assert.False ( secondCommand );
+		}
+
 	}
 
 }

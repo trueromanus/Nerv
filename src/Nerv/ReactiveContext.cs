@@ -145,6 +145,23 @@ namespace Nerv {
 			}
 		}
 
+		/// <summary>
+		/// Raise all attached properties in concrete group.
+		/// </summary>
+		public void RaiseAllInGroup ( string group ) {
+			foreach ( var reactiveProperty in m_reactiveProperties ) {
+				if ( reactiveProperty.TryGetTarget ( out var groupPropertyTarget ) && groupPropertyTarget.Group == group ) {
+					groupPropertyTarget.RaiseProperty ();
+				}
+			}
+
+			foreach ( var reactiveCommand in m_reactiveCommands ) {
+				if ( reactiveCommand.TryGetTarget ( out var command ) && command.Group == group ) {
+					command.RaiseCanExecuteChanged ();
+				}
+			}
+		}
+
 	}
 
 }
